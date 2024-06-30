@@ -22,8 +22,28 @@ type ExampleReply struct {
 	Y int
 }
 
-// Add your RPC definitions here.
-
+type RegArgs struct {
+	//不需要参数
+}
+type RegReply struct {
+	WorkerId int
+}
+type AssignArgs struct {
+	WorkerId int
+}
+type AssignReply struct {
+	Task *Task
+}
+type ReportArgs struct {
+	WorkerId int
+	TaskId   int
+	Stage    int
+	Done     bool
+	//由哪个worker执行，因为报告具有延迟性，可能该节点已经过时严重；是哪个task，由stage和taskid共同决定；执行情况；
+}
+type ReportReply struct {
+	//不需要恢复
+}
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the coordinator.
